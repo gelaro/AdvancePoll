@@ -4,6 +4,7 @@ App = {
   account: '0x0',
   hasVoted: false,
 
+
   init: function() {
     return App.initWeb3();
   },
@@ -23,11 +24,11 @@ App = {
   },
 
   initContract: function() {
-    $.getJSON("Election.json", function(election) {
+    $.getJSON("Poll.json", function(poll) {
       // Instantiate a new truffle contract from the artifact
-      App.contracts.Election = TruffleContract(election);
+      App.contracts.Poll = TruffleContract(poll);
       // Connect provider to interact with contract
-      App.contracts.Election.setProvider(App.web3Provider);
+      App.contracts.Poll.setProvider(App.web3Provider);
 
       App.listenForEvents();
 
@@ -120,6 +121,11 @@ App = {
     });
   }
 };
+
+
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
 
 $(function() {
   $(window).load(function() {
